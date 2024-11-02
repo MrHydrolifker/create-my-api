@@ -29,7 +29,7 @@ function Gradient({
 
 const LINKS = [
   {
-    title: "Docsds",
+    title: "Docs",
     href: "https://turbo.build/repo/docs",
     description: "Find in-depth information about Turborepo features and API.",
   },
@@ -48,6 +48,21 @@ const LINKS = [
     href: "https://vercel.com/new",
     description:
       "Instantly deploy your Turborepo to a shareable URL with Vercel.",
+  },
+  {
+    title: "API Reference",
+    href: "https://turbo.build/repo/docs/api",
+    description: "Access the comprehensive API reference for Turborepo.",
+  },
+  {
+    title: "Community",
+    href: "https://turbo.build/repo/community",
+    description: "Join our community for discussions and support.",
+  },
+  {
+    title: "Blog",
+    href: "https://turbo.build/repo/blog",
+    description: "Read the latest updates and articles on Turborepo.",
   },
 ];
 
@@ -100,7 +115,7 @@ export default function Page(): JSX.Element {
 
             <div className={styles.logo}>
               <Image
-                alt=""
+                alt="Turborepo Logo"
                 height={120}
                 priority
                 src="turborepo.svg"
@@ -124,20 +139,23 @@ export default function Page(): JSX.Element {
               <path d="M171.287 48.4175H205.128C215.683 48.4175 221.752 43.404 221.752 35.0262C221.752 29.419 218.189 25.593 213.967 23.8778C216.87 22.4925 220.432 19.1942 220.432 13.9828C220.432 5.60502 214.495 1.05332 204.006 1.05332H171.287V48.4175ZM183.689 19.59V11.542H202.687C206.249 11.542 208.228 12.9273 208.228 15.566C208.228 18.2047 206.249 19.59 202.687 19.59H183.689ZM183.689 29.2871H203.875C207.371 29.2871 209.284 31.0022 209.284 33.5749C209.284 36.1476 207.371 37.8628 203.875 37.8628H183.689V29.2871Z" />
               <path d="M253.364 0.261719C236.806 0.261719 224.866 10.6185 224.866 24.7354C224.866 38.8523 236.806 49.2091 253.364 49.2091C269.922 49.2091 281.796 38.8523 281.796 24.7354C281.796 10.6185 269.922 0.261719 253.364 0.261719ZM253.364 11.4761C262.072 11.4761 268.602 16.6215 268.602 24.7354C268.602 32.8493 262.072 37.9947 253.364 37.9947C244.656 37.9947 238.126 32.8493 238.126 24.7354C238.126 16.6215 244.656 11.4761 253.364 11.4761Z" />
               <path d="M300.429 32.7174H313.292L323.451 48.4175H338.294L326.815 31.3321C333.28 29.0232 337.238 23.8778 337.238 16.8853C337.238 6.72646 329.652 1.05332 318.108 1.05332H287.499V48.4175H300.429V32.7174ZM300.429 22.4925V11.8719H317.448C322 11.8719 324.507 13.8509 324.507 17.2152C324.507 20.3816 322 22.4925 317.448 22.4925H300.429Z" />
-              <path d="M343.254 1.05332V48.4175H389.299V37.467H355.92V29.7489H385.539V19.0622H355.92V12.0038H389.299V1.05332H343.254Z" />
-              <path d="M408.46 33.3111H425.677C437.221 33.3111 444.807 27.7699 444.807 17.2152C444.807 6.59453 437.221 1.05332 425.677 1.05332H395.53V48.4175H408.46V33.3111ZM408.46 22.5585V11.8719H424.951C429.569 11.8719 432.076 13.8509 432.076 17.2152C432.076 20.5135 429.569 22.5585 424.951 22.5585H408.46Z" />
-              <path d="M476.899 0.261719C460.341 0.261719 448.401 10.6185 448.401 24.7354C448.401 38.8523 460.341 49.2091 476.899 49.2091C493.456 49.2091 505.33 38.8523 505.33 24.7354C505.33 10.6185 493.456 0.261719 476.899 0.261719ZM476.899 11.4761C485.606 11.4761 492.137 16.6215 492.137 24.7354C492.137 32.8493 485.606 37.9947 476.899 37.9947C468.191 37.9947 461.66 32.8493 461.66 24.7354C461.66 16.6215 468.191 11.4761 476.899 11.4761Z" />
+              <path d="M373.933 37.2807C366.4 37.2807 359.908 32.893 359.908 26.0579C359.908 19.688 365.564 15.1677 371.961 11.6551C377.867 8.51188 382.199 4.69307 382.199 0H366.368C366.368 4.75009 362.61 8.59253 355.617 12.0562C349.093 15.8113 343.953 19.3534 343.953 26.0579C343.953 32.3433 351.908 37.2807 359.08 37.2807C366.267 37.2807 372.626 33.2993 373.933 29.4931V37.2807Z" />
             </svg>
           </div>
+          <div className={styles.separator} />
+          <div className={styles.links}>
+            {LINKS.map(({ title, href, description }) => (
+              <Card key={href} className={styles.card}>
+                <h3>
+                  <a href={href} target="_blank" rel="noopener noreferrer">
+                    {title}
+                  </a>
+                </h3>
+                <p>{description}</p>
+              </Card>
+            ))}
+          </div>
         </div>
-      </div>
-
-      <div className={styles.grid}>
-        {LINKS.map(({ title, href, description }) => (
-          <Card className={styles.card} href={href} key={title} title={title}>
-            {description}
-          </Card>
-        ))}
       </div>
     </main>
   );
